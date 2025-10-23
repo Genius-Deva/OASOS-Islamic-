@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Islamic Library | Quran, Sunnah, Hadith & Books</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f5ee;
+    }
+
+    .arabic-text {
+      font-family: 'Amiri', serif;
+      font-size: 1.8rem;
+      line-height: 3rem;
+      direction: rtl;
+    }
+
+    .nav-link:hover {
+      color: #d4a054;
+    }
+
+    .search-box {
+      transition: all 0.3s ease;
+    }
+
+    .search-box:focus-within {
+      box-shadow: 0 0 0 3px rgba(212, 160, 84, 0.3);
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .surah-card:hover {
+      background-color: #f0e6d6;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .bg-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a054' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+
+<body class="bg-pattern">
+  <!-- Header with Navigation -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-mosque text-3xl text-amber-700"></i>
+        <h1 class="text-2xl font-bold text-amber-800">Islamic Library</h1>
+      </div>
+
+      <nav class="hidden md:flex space-x-8">
+        <a href="#quran" class="nav-link text-gray-700 hover:text-amber-700 transition">Quran</a>
+        <a href="#sunnah" class="nav-link text-gray-700 hover:text-amber-700 transition">Sunnah</a>
+        <a href="#hadith" class="nav-link text-gray-700 hover:text-amber-700 transition">Hadith</a>
+        <a href="#books" class="nav-link text-gray-700 hover:text-amber-700 transition">Books</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="text-gray-600 hover:text-amber-700">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="mobile-menu-button" class="md:hidden text-gray-700">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg">
+      <div class="flex flex-col space-y-4">
+        <a href="#quran" class="nav-link text-gray-700 hover:text-amber-700 transition">Quran</a>
+        <a href="#sunnah" class="nav-link text-gray-700 hover:text-amber-700 transition">Sunnah</a>
+        <a href="#hadith" class="nav-link text-gray-700 hover:text-amber-700 transition">Hadith</a>
+        <a href="#books" class="nav-link text-gray-700 hover:text-amber-700 transition">Islamic Books</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-amber-100 to-amber-50 py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold text-amber-800 mb-6">Welcome to Islamic Library</h2>
+      <p class="text-xl text-gray-700 mb-8">Your comprehensive resource for Quran, Sunnah, Hadith and Islamic knowledge
+      </p>
+
+      <div class="max-w-2xl mx-auto relative">
+        <div class="search-box flex items-center bg-white rounded-full shadow-md overflow-hidden px-4 py-2">
+          <input type="text" placeholder="Search for verses, hadith, or books..."
+            class="flex-grow outline-none px-3 py-2 text-gray-700">
+          <button class="bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Verse -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="bg-amber-50 border-l-4 border-amber-600 rounded-lg p-6 shadow-sm">
+        <h3 class="text-2xl font-bold text-amber-800 mb-4 text-center">Verse of the Day</h3>
+        <div class="arabic-text text-center mb-6 text-gray-800 leading-loose">
+          ﴿ وَمَن يَتَّقِ ٱللَّهَ يَجْعَل لَّهُۥ مَخْرَجࣰا وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُۚ وَمَن يَتَوَكَّلْ
+          عَلَى ٱللَّهِ فَهُوَ حَسْبُهُۥٓۚ إِنَّ ٱللَّهَ بَـٰلِغُ أَمْرِهِۦۚ قَدْ جَعَلَ ٱللَّهُ لِكُلِّ شَىْءࣲ قَدْرࣰا
+          ﴾
+        </div>
+        <p class="text-center text-gray-600">"And whoever fears Allah - He will make for him a way out and will provide
+          for him from where he does not expect. And whoever relies upon Allah - then He is sufficient for him. Indeed,
+          Allah will accomplish His purpose. Allah has already set for everything a [decreed] extent."</p>
+        <p class="text-center mt-4 text-amber-700 font-medium">Surah At-Talaq (65:2-3)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quran Section -->
+  <section id="quran" class="py-16 bg-amber-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-amber-800 mb-8 text-center">Al-Quran</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer">
+          <div class="flex items-center mb-4">
+            <div class="bg-amber-100 p-3 rounded-full mr-4">
+              <i class="fas fa-book-quran text-amber-700 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Quran Tafsir</h3>
+          </div>
+          <p class="text-gray-600">Explore Quran interpretations from renowned scholars</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer">
+          <div class="flex items-center mb-4">
+            <div class="bg-amber-100 p-3 rounded-full mr-4">
+              <i class="fas fa-microphone-alt text-amber-700 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Recitations</h3>
+          </div>
+          <p class="text-gray-600">Listen to Quran recitations by famous reciters</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer">
+          <div class="flex items-center mb-4">
+            <div class="bg-amber-100 p-3 rounded-full mr-4">
+              <i class="fas fa-search text-amber-700 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Search Quran</h3>
+          </div>
+          <p class="text-gray-600">Search for any word or verse in the Quran</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer">
+          <div class="flex items-center mb-4">
+            <div class="bg-amber-100 p-3 rounded-full mr-4">
+              <i class="fas fa-graduation-cap text-amber-700 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Learn Tajweed</h3>
+          </div>
+          <p class="text-gray-600">Learn proper Quran recitation rules</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="p-6 border-b border-gray-200">
+          <h3 class="text-xl font-bold text-gray-800">Quran Chapters</h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
+          <!-- Surah cards will be dynamically loaded here -->
+          <div id="surah-container" class="col-span-full">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <!-- Sample surah cards (would be loaded dynamically in a real app) -->
+              <div
+                class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                <div
+                  class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                  1</div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Al-Fatiha</h4>
+                  <p class="text-sm text-gray-600">7 verses</p>
+                </div>
+              </div>
+
+              <div
+                class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                <div
+                  class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                  2</div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Al-Baqarah</h4>
+                  <p class="text-sm text-gray-600">286 verses</p>
+                </div>
+              </div>
+
+              <div
+                class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                <div
+                  class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                  3</div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Aal-E-Imran</h4>
+                  <p class="text-sm text-gray-600">200 verses</p>
+                </div>
+              </div>
+
+              <div
+                class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                <div
+                  class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                  4</div>
+                <div>
+                  <h4 class="font-bold text-gray-800">An-Nisa'</h4>
+                  <p class="text-sm text-gray-600">176 verses</p>
+                </div>
+              </div>
+
+              <div
+                class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                <div
+                  class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                  5</div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Al-Ma'idah</h4>
+                  <p class="text-sm text-gray-600">120 verses</p>
+                </div>
+              </div>
+
+              <div
+                class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                <div
+                  class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                  6</div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Al-An'am</h4>
+                  <p class="text-sm text-gray-600">165 verses</p>
+                </div>
+              </div>
+              <div id="showMore" style="display: none;">
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    7</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-A'raf</h4>
+                    <p class="text-sm text-gray-600">206 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    8</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Anfal</h4>
+                    <p class="text-sm text-gray-600">75 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    9</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">At-Tawbah</h4>
+                    <p class="text-sm text-gray-600">129 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    10</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Yunus</h4>
+                    <p class="text-sm text-gray-600">109 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    11</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Hud</h4>
+                    <p class="text-sm text-gray-600">123 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    12</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Yusuf</h4>
+                    <p class="text-sm text-gray-600">111 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    13</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ar-Ra'd</h4>
+                    <p class="text-sm text-gray-600">43 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    14</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ibrahim</h4>
+                    <p class="text-sm text-gray-600">52 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    15</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Hijr</h4>
+                    <p class="text-sm text-gray-600">99 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    16</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">An-Nahl</h4>
+                    <p class="text-sm text-gray-600">128 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    17</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Isra</h4>
+                    <p class="text-sm text-gray-600">111 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    18</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Kahf</h4>
+                    <p class="text-sm text-gray-600">110 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    19</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Maryam</h4>
+                    <p class="text-sm text-gray-600">98 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    20</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Taha</h4>
+                    <p class="text-sm text-gray-600">135 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    21</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Anbiya</h4>
+                    <p class="text-sm text-gray-600">112 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    22</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Hajj</h4>
+                    <p class="text-sm text-gray-600">78 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    23</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Mu’minun</h4>
+                    <p class="text-sm text-gray-600">118 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    24</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">An-Nur</h4>
+                    <p class="text-sm text-gray-600">64 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    25</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Furqan</h4>
+                    <p class="text-sm text-gray-600">77 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    26</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ash-Shu'ara</h4>
+                    <p class="text-sm text-gray-600">227 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    27</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">An-Naml</h4>
+                    <p class="text-sm text-gray-600">55 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    28</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Qasas</h4>
+                    <p class="text-sm text-gray-600">88 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    29</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Ankabut</h4>
+                    <p class="text-sm text-gray-600">69 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    30</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ar-Rum</h4>
+                    <p class="text-sm text-gray-600">60 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    31</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Luqman</h4>
+                    <p class="text-sm text-gray-600">34 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    32</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">As-Sajda</h4>
+                    <p class="text-sm text-gray-600">30 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    33</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Ahzab</h4>
+                    <p class="text-sm text-gray-600">73 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    34</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Saba</h4>
+                    <p class="text-sm text-gray-600">54 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    35</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Fatir</h4>
+                    <p class="text-sm text-gray-600">45 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    36</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ya-Sin</h4>
+                    <p class="text-sm text-gray-600">83 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    37</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">As-Saffat</h4>
+                    <p class="text-sm text-gray-600">182 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    38</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Sad</h4>
+                    <p class="text-sm text-gray-600">88 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    39</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Az-Zumar</h4>
+                    <p class="text-sm text-gray-600">75 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    40</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ghafir</h4>
+                    <p class="text-sm text-gray-600">85 verses</p>
+                  </div>
+                </div>
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    41</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Fussilat</h4>
+                    <p class="text-sm text-gray-600">54 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    42</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ash-Shura</h4>
+                    <p class="text-sm text-gray-600">53 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    43</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Az-Zukhruf</h4>
+                    <p class="text-sm text-gray-600">89 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    44</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ad-Dukhan</h4>
+                    <p class="text-sm text-gray-600">59 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    45</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Jathiya</h4>
+                    <p class="text-sm text-gray-600">37 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    46</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Ahqaf</h4>
+                    <p class="text-sm text-gray-600">34 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    47</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Muhammad</h4>
+                    <p class="text-sm text-gray-600">38 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    48</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Fath</h4>
+                    <p class="text-sm text-gray-600">29 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    49</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Hujurat</h4>
+                    <p class="text-sm text-gray-600">18 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    50</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Qaf</h4>
+                    <p class="text-sm text-gray-600">45 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    51</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Adh-Dhariyat</h4>
+                    <p class="text-sm text-gray-600">60 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    52</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">At-Tur</h4>
+                    <p class="text-sm text-gray-600">49 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    53</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">An-Najm</h4>
+                    <p class="text-sm text-gray-600">62 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    54</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Qamar</h4>
+                    <p class="text-sm text-gray-600">55 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    55</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ar-Rahman</h4>
+                    <p class="text-sm text-gray-600">78 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    56</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Waqi’a</h4>
+                    <p class="text-sm text-gray-600">96 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    57</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Hadid</h4>
+                    <p class="text-sm text-gray-600">29 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    58</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Mujadila</h4>
+                    <p class="text-sm text-gray-600">22 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    59</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Hashr</h4>
+                    <p class="text-sm text-gray-600">24 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    60</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Mumtahina</h4>
+                    <p class="text-sm text-gray-600">13 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    61</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">As-Saff</h4>
+                    <p class="text-sm text-gray-600">14 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    62</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Jumu'a</h4>
+                    <p class="text-sm text-gray-600">11 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    63</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Munafiqun</h4>
+                    <p class="text-sm text-gray-600">11 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    64</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">At-Taghabun</h4>
+                    <p class="text-sm text-gray-600">18 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    65</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">At-Talaq</h4>
+                    <p class="text-sm text-gray-600">12 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    66</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">At-Tahrim</h4>
+                    <p class="text-sm text-gray-600">12 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    67</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Mulk</h4>
+                    <p class="text-sm text-gray-600">30 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    68</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Qalam</h4>
+                    <p class="text-sm text-gray-600">52 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    69</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Haqqah</h4>
+                    <p class="text-sm text-gray-600">52 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    70</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Maarij</h4>
+                    <p class="text-sm text-gray-600">44 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    71</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Nuh</h4>
+                    <p class="text-sm text-gray-600">28 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    72</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Jinn</h4>
+                    <p class="text-sm text-gray-600">28 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    73</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Muzzammil</h4>
+                    <p class="text-sm text-gray-600">20 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    74</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Muddathir</h4>
+                    <p class="text-sm text-gray-600">56 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    75</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Qiyama</h4>
+                    <p class="text-sm text-gray-600">40 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    76</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Insan</h4>
+                    <p class="text-sm text-gray-600">31 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    77</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Mursalat</h4>
+                    <p class="text-sm text-gray-600">50 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    78</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">An-Naba</h4>
+                    <p class="text-sm text-gray-600">40 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    79</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">An-Nazi'at</h4>
+                    <p class="text-sm text-gray-600">46 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    80</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Abasa</h4>
+                    <p class="text-sm text-gray-600">42 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    81</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">At-Takwir</h4>
+                    <p class="text-sm text-gray-600">29 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    82</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Infitar</h4>
+                    <p class="text-sm text-gray-600">19 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    83</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Mutaffifin</h4>
+                    <p class="text-sm text-gray-600">36 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    84</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Inshiqaq</h4>
+                    <p class="text-sm text-gray-600">25 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    85</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Buruj</h4>
+                    <p class="text-sm text-gray-600">22 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    86</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">At-Tariq</h4>
+                    <p class="text-sm text-gray-600">17 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    87</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-A'la</h4>
+                    <p class="text-sm text-gray-600">19 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    88</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Ghashiya</h4>
+                    <p class="text-sm text-gray-600">26 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    89</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Fajr</h4>
+                    <p class="text-sm text-gray-600">30 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    90</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Balad</h4>
+                    <p class="text-sm text-gray-600">20 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    91</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ash-Shams</h4>
+                    <p class="text-sm text-gray-600">15 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    92</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Lail</h4>
+                    <p class="text-sm text-gray-600">21 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    93</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Adh-Dhuha</h4>
+                    <p class="text-sm text-gray-600">11 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    94</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Ash-Sharh</h4>
+                    <p class="text-sm text-gray-600">8 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    95</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">At-Tin</h4>
+                    <p class="text-sm text-gray-600">8 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    96</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Alaq</h4>
+                    <p class="text-sm text-gray-600">19 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    97</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Qadr</h4>
+                    <p class="text-sm text-gray-600">5 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    98</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Bayyina</h4>
+                    <p class="text-sm text-gray-600">8 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    99</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Az-Zalzalah</h4>
+                    <p class="text-sm text-gray-600">8 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    100</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Adiyat</h4>
+                    <p class="text-sm text-gray-600">11 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    101</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Qari'ah</h4>
+                    <p class="text-sm text-gray-600">11 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    102</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">At-Takathur</h4>
+                    <p class="text-sm text-gray-600">8 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    103</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Asr</h4>
+                    <p class="text-sm text-gray-600">3 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    104</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Humazah</h4>
+                    <p class="text-sm text-gray-600">9 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    105</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Fil</h4>
+                    <p class="text-sm text-gray-600">5 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    106</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Quraish</h4>
+                    <p class="text-sm text-gray-600">4 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    107</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Ma'un</h4>
+                    <p class="text-sm text-gray-600">7 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    108</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Kawthar</h4>
+                    <p class="text-sm text-gray-600">3 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    109</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Kafirun</h4>
+                    <p class="text-sm text-gray-600">6 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    110</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">An-Nasr</h4>
+                    <p class="text-sm text-gray-600">3 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    111</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Masad</h4>
+                    <p class="text-sm text-gray-600">5 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    112</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Ikhlas</h4>
+                    <p class="text-sm text-gray-600">4 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    113</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Al-Falaq</h4>
+                    <p class="text-sm text-gray-600">5 verses</p>
+                  </div>
+                </div>
+
+                <div
+                  class="surah-card bg-white border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer transition hover:shadow-md">
+                  <div
+                    class="bg-amber-100 text-amber-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">
+                    114</div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">An-Nas</h4>
+                    <p class="text-sm text-gray-600">6 verses</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Continue adding the rest of the Surahs as needed -->
+              |
+
+              <!-- Continue this pattern for the subsequent Surahs -->
+
+
+
+              <!-- Add more Surahs here following the same structure -->
+
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 border-t border-gray-200 flex justify-center">
+          <button onclick="show()" class="bg-amber-600 text-white px-6 py-2 rounded-md hover:bg-amber-700 transition">
+            View All Chapters
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sunnah Section -->
+  <section id="sunnah" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-amber-800 mb-8 text-center">The Prophet's Sunnah</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-amber-50 rounded-lg shadow-md overflow-hidden">
+          <div class="h-48 bg-amber-200 flex items-center justify-center">
+            <i class="fas fa-hands-praying text-6xl text-amber-700"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Prayer</h3>
+            <p class="text-gray-600 mb-4">Learn how to perform prayer as taught by the Prophet ﷺ</p>
+            <button class="text-amber-700 font-medium hover:text-amber-800 transition">Explore Now →</button>
+          </div>
+        </div>
+
+        <div class="bg-amber-50 rounded-lg shadow-md overflow-hidden">
+          <div class="h-48 bg-amber-200 flex items-center justify-center">
+            <i class="fas fa-hand-holding-heart text-6xl text-amber-700"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Zakat</h3>
+            <p class="text-gray-600 mb-4">Understand the rulings and importance of Zakat in Islam</p>
+            <button class="text-amber-700 font-medium hover:text-amber-800 transition">Explore Now →</button>
+          </div>
+        </div>
+
+        <div class="bg-amber-50 rounded-lg shadow-md overflow-hidden">
+          <div class="h-48 bg-amber-200 flex items-center justify-center">
+            <i class="fas fa-kaaba text-6xl text-amber-700"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Hajj & Umrah</h3>
+            <p class="text-gray-600 mb-4">Learn the rituals of Hajj and Umrah as performed by the Prophet ﷺ</p>
+            <button class="text-amber-700 font-medium hover:text-amber-800 transition">Explore Now →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hadith Section -->
+  <section id="hadith" class="py-16 bg-amber-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-amber-800 mb-8 text-center">Hadith Collections</h2>
+
+      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-12">
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <h3 class="text-xl font-bold text-gray-800 mb-4 md:mb-0">Featured Hadith</h3>
+            <div class="flex space-x-4">
+              <select
+                class="bg-gray-100 border border-gray-300 text-gray-700 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                <option>Sahih al-Bukhari</option>
+                <option>Sahih Muslim</option>
+                <option>Sunan at-Tirmidhi</option>
+                <option>Sunan Abu Dawood</option>
+              </select>
+              <button class="bg-amber-600 text-white px-4 py-2 rounded-md hover:bg-amber-700 transition">
+                Browse Books
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6">
+          <div class="space-y-6">
+            <div
+              class="hadith-card bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition cursor-pointer">
+              <div class="arabic-text text-gray-800 leading-loose mb-4">
+                قَالَ رَسُولُ اللَّهِ ﷺ: «مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ بِهِ
+                طَرِيقًا إِلَى الْجَنَّةِ»
+              </div>
+              <div class="text-gray-700 mb-4">
+                The Messenger of Allah ﷺ said: "Whoever travels a path in search of knowledge, Allah will make easy for
+                him a path to Paradise."
+              </div>
+              <div class="flex justify-between items-center">
+                <p class="text-sm text-gray-500">Sahih Muslim</p>
+                <button class="text-amber-600 hover:text-amber-700">
+                  <i class="fas fa-share-alt"></i>
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="hadith-card bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition cursor-pointer">
+              <div class="arabic-text text-gray-800 leading-loose mb-4">
+                عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ: «إِنَّ اللَّهَ لَا يَنْظُرُ
+                إِلَى صُوَرِكُمْ وَأَمْوَالِكُمْ، وَلَكِنْ يَنْظُرُ إِلَى قُلُوبِكُمْ وَأَعْمَالِكُمْ»
+              </div>
+              <div class="text-gray-700 mb-4">
+                Abu Huraira reported: The Messenger of Allah ﷺ said: "Allah does not look at your appearances or wealth,
+                but He looks at your hearts and your deeds."
+              </div>
+              <div class="flex justify-between items-center">
+                <p class="text-sm text-gray-500">Sahih Muslim</p>
+                <button class="text-amber-600 hover:text-amber-700">
+                  <i class="fas fa-share-alt"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 border-t border-gray-200 flex justify-center">
+          <button class="bg-amber-600 text-white px-6 py-2 rounded-md hover:bg-amber-700 transition">
+            More Hadith
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Islamic Books Section -->
+  <section id="books" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-amber-800 mb-8 text-center">Islamic Library</h2>
+
+      <div class="mb-8">
+        <div class="flex flex-wrap gap-4 justify-center">
+          <button class="bg-amber-600 text-white px-4 py-2 rounded-md hover:bg-amber-700 transition">Aqeedah</button>
+          <button class="bg-amber-100 text-amber-800 px-4 py-2 rounded-md hover:bg-amber-200 transition">Fiqh</button>
+          <button class="bg-amber-100 text-amber-800 px-4 py-2 rounded-md hover:bg-amber-200 transition">Seerah</button>
+          <button class="bg-amber-100 text-amber-800 px-4 py-2 rounded-md hover:bg-amber-200 transition">Tafsir</button>
+          <button class="bg-amber-100 text-amber-800 px-4 py-2 rounded-md hover:bg-amber-200 transition">Hadith</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Book Cards -->
+        <div class="book-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+          <div class="h-48 bg-amber-100 flex items-center justify-center">
+            <i class="fas fa-book-open text-6xl text-amber-700"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Riyad as-Salihin</h3>
+            <p class="text-gray-600 text-sm mb-4">By Imam Nawawi - Collection of authentic hadith on various Islamic
+              topics</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-amber-700">Aqeedah & Worship</span>
+              <button class="text-amber-600 hover:text-amber-700">
+                <i class="fas fa-download"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="book-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+          <div class="h-48 bg-amber-100 flex items-center justify-center">
+            <i class="fas fa-book-open text-6xl text-amber-700"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Fiqh us-Sunnah</h3>
+            <p class="text-gray-600 text-sm mb-4">By Sayyid Sabiq - Comprehensive book on Islamic jurisprudence with
+              Quran and Sunnah evidences</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-amber-700">Fiqh</span>
+              <button class="text-amber-600 hover:text-amber-700">
+                <i class="fas fa-download"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="book-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+          <div class="h-48 bg-amber-100 flex items-center justify-center">
+            <i class="fas fa-book-open text-6xl text-amber-700"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">The Sealed Nectar</h3>
+            <p class="text-gray-600 text-sm mb-4">By Safiur-Rahman Mubarakpuri - Biography of Prophet Muhammad ﷺ in easy
+              language</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-amber-700">Prophet's Biography</span>
+              <button class="text-amber-600 hover:text-amber-700">
+                <i class="fas fa-download"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="book-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+          <div class="h-48 bg-amber-100 flex items-center justify-center">
+            <i class="fas fa-book-open text-6xl text-amber-700"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Tafsir Ibn Kathir</h3>
+            <p class="text-gray-600 text-sm mb-4">By Hafiz Ibn Kathir - One of the most renowned Quran commentaries
+              based on Quran and Sunnah</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-amber-700">Quran Tafsir</span>
+              <button class="text-amber-600 hover:text-amber-700">
+                <i class="fas fa-download"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <button class="bg-amber-600 text-white px-6 py-3 rounded-md hover:bg-amber-700 transition">
+          Browse All Books
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prayer Times Section -->
+  <section class="py-16 bg-amber-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-amber-800 mb-8 text-center">Prayer Times</h2>
+
+      <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-gray-800">Riyadh, Saudi Arabia</h3>
+              <p class="text-gray-600" id="hijri-date">Today: 15 Ramadan 1444 AH</p>
+            </div>
+            <button class="mt-4 md:mt-0 bg-amber-100 text-amber-800 px-4 py-2 rounded-md hover:bg-amber-200 transition">
+              Change Location
+            </button>
+          </div>
+        </div>
+
+        <div class="p-6">
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div class="p-4 text-center">
+              <div class="text-2xl font-bold text-amber-700">Fajr</div>
+              <div class="text-xl mt-2">4:30 AM</div>
+            </div>
+            <div class="p-4 text-center">
+              <div class="text-2xl font-bold text-amber-700">Dhuhr</div>
+              <div class="text-xl mt-2">12:15 PM</div>
+            </div>
+            <div class="p-4 text-center">
+              <div class="text-2xl font-bold text-amber-700">Asr</div>
+              <div class="text-xl mt-2">3:45 PM</div>
+            </div>
+            <div class="p-4 text-center">
+              <div class="text-2xl font-bold text-amber-700">Maghrib</div>
+              <div class="text-xl mt-2">6:30 PM</div>
+            </div>
+            <div class="p-4 text-center">
+              <div class="text-2xl font-bold text-amber-700">Isha</div>
+              <div class="text-xl mt-2">8:00 PM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-16 bg-amber-800 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Receive daily verse, hadith, and Islamic articles directly to your inbox
+      </p>
+
+      <div class="max-w-md mx-auto flex">
+        <input type="email" placeholder="Your email address"
+          class="flex-grow px-4 py-3 rounded-r-md outline-none text-gray-800">
+        <button class="bg-amber-600 px-6 py-3 rounded-l-md hover:bg-amber-700 transition">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="fas fa-mosque mr-2"></i> Islamic Library
+          </h3>
+          <p class="text-gray-400">Your comprehensive resource for Quran, Sunnah, Hadith and Islamic knowledge</p>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">Home</a></li>
+            <li><a href="#quran" class="text-gray-400 hover:text-amber-400 transition">Quran</a></li>
+            <li><a href="#sunnah" class="text-gray-400 hover:text-amber-400 transition">Sunnah</a></li>
+            <li><a href="#hadith" class="text-gray-400 hover:text-amber-400 transition">Hadith</a></li>
+            <li><a href="#books" class="text-gray-400 hover:text-amber-400 transition">Islamic Books</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-4">Contact Us</h4>
+          <ul class="space-y-2">
+            <li class="flex items-center">
+              <i class="fas fa-envelope mr-2 text-amber-400"></i>
+              <span class="text-gray-400">info@islamiclibrary.com</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone mr-2 text-amber-400"></i>
+              <span class="text-gray-400">+234 808030 9969</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-4">Follow Us</h4>
+          <div class="flex space-x-4">
+            <a href="#"
+              class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-600 transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#"
+              class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-600 transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#"
+              class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-600 transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#"
+              class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-600 transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
+        <p>© 2023 Islamic Library. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top"
+    class="fixed bottom-8 right-8 bg-amber-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-amber-700 transition opacity-0 invisible">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Mobile Menu Toggle
+    let showMore = document.getElementById('showMore')
+    function show() {
+      console.log('hey');
+
+      showMore.style.display = 'block'
+    }
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+
+      if (html.classList.contains('dark')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        // You would need to add dark mode classes to your elements
+      } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+    });
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.remove('opacity-100', 'visible');
+        backToTopButton.classList.add('opacity-0', 'invisible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+
+          // Close mobile menu if open
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // Simulate loading surahs (in a real app, this would be an API call)
+    document.addEventListener('DOMContentLoaded', () => {
+      // This is just a simulation - in a real app you would fetch from an API
+      setTimeout(() => {
+        const surahContainer = document.getElementById('surah-container');
+        if (surahContainer) {
+          surahContainer.classList.add('fade-in');
+        }
+      }, 300);
+
+      // Set Hijri date (simplified - in real app use a proper Hijri date library)
+      const hijriDateElement = document.getElementById('hijri-date');
+      if (hijriDateElement) {
+        const today = new Date();
+        const hijriMonths = ['Muharram', 'Safar', 'Rabi al-Awwal', 'Rabi al-Thani', 'Jumada al-Awwal', 'Jumada al-Thani', 'Rajab', 'Shaaban', 'Ramadan', 'Shawwal', 'Dhu al-Qadah', 'Dhu al-Hijjah'];
+        const hijriDay = Math.floor(Math.random() * 29) + 1; // Random day for demo
+        const hijriMonth = hijriMonths[Math.floor(Math.random() * 12)];
+        const hijriYear = 1444;
+
+        hijriDateElement.textContent = `Today: ${hijriDay} ${hijriMonth} ${hijriYear} AH`;
+      }
+    });
+
+  </script>
+</body>
+
+</html>
