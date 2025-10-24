@@ -1,6 +1,7 @@
 body{
     background-color: rgb(68, 63, 63);
 }
+
 nav {
     display: flex;
     justify-content: center;
@@ -130,6 +131,7 @@ align-items: center;
         justify-content: center;
         align-items: center;
     }
+    
 
     .wrapper div:hover, .wrapper2 div:hover{
         transform: translateY(7px);
