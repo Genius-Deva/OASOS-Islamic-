@@ -5,6 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f5ee;
+    }
+
+    .arabic-text {
+      font-family: 'Amiri', serif;
+      font-size: 1.8rem;
+      line-height: 3rem;
+      direction: rtl;
+    }
+
+    .nav-link:hover {
+      color: #d4a054;
+    }
+
+    
+
+    .search-box:focus-within {
+      box-shadow: 0 0 0 3px rgba(212, 160, 84, 0.3);
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .surah-card:hover {
+      background-color: #f0e6d6;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .bg-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a054' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+  </style>
 </head>
   
 <body>
@@ -16,10 +69,11 @@
       </div>
 
       <nav class="hidden md:flex space-x-8">
-        <a href="#quran" class="nav-link text-gray-700 hover:text-amber-700 transition">Quran</a>
-        <a href="#sunnah" class="nav-link text-gray-700 hover:text-amber-700 transition">Sunnah</a>
-        <a href="#hadith" class="nav-link text-gray-700 hover:text-amber-700 transition">Hadith</a>
-        <a href="#books" class="nav-link text-gray-700 hover:text-amber-700 transition">Books</a>
+        <a href="./index.html">Home</a>
+        <a href="./index.html" class="nav-link text-gray-700 hover:text-amber-700 transition">Quran</a>
+        <a href="./index.html" class="nav-link text-gray-700 hover:text-amber-700 transition">Sunnah</a>
+        <a href="./index.html" class="nav-link text-gray-700 hover:text-amber-700 transition">Hadith</a>
+        <a href="./index.html" class="nav-link text-gray-700 hover:text-amber-700 transition">Books</a>
       </nav>
 
       <div class="flex items-center space-x-4">
@@ -35,10 +89,10 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg">
       <div class="flex flex-col space-y-4">
-        <a href="#quran" class="nav-link text-gray-700 hover:text-amber-700 transition">Quran</a>
-        <a href="#sunnah" class="nav-link text-gray-700 hover:text-amber-700 transition">Sunnah</a>
-        <a href="#hadith" class="nav-link text-gray-700 hover:text-amber-700 transition">Hadith</a>
-        <a href="#books" class="nav-link text-gray-700 hover:text-amber-700 transition">Islamic Books</a>
+        <a href="./index.html" class="nav-link text-gray-700 hover:text-amber-700 transition">Quran</a>
+        <a href="./index.html" class="nav-link text-gray-700 hover:text-amber-700 transition">Sunnah</a>
+        <a href="./index.html" class="nav-link text-gray-700 hover:text-amber-700 transition">Hadith</a>
+        <a href="./index.html" class="nav-link text-gray-700 hover:text-amber-700 transition">Islamic Books</a>
       </div>
     </div>
   </header>
@@ -1302,7 +1356,7 @@
               </div>
 
               <!-- Continue adding the rest of the Surahs as needed -->
-              |
+              
 
               <!-- Continue this pattern for the subsequent Surahs -->
 
@@ -1323,5 +1377,171 @@
       </div>
     </div>
   </section>
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="fas fa-mosque mr-2"></i> Islamic Library
+          </h3>
+          <p class="text-gray-400">Your comprehensive resource for Quran, Sunnah, Hadith and Islamic knowledge</p>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">Home</a></li>
+            <li><a href="./index.html" class="text-gray-400 hover:text-amber-400 transition">Quran</a></li>
+            <li><a href="./index.html" class="text-gray-400 hover:text-amber-400 transition">Sunnah</a></li>
+            <li><a href="./index.html" class="text-gray-400 hover:text-amber-400 transition">Hadith</a></li>
+            <li><a href="./index.html" class="text-gray-400 hover:text-amber-400 transition">Islamic Books</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-4">Contact Us</h4>
+          <ul class="space-y-2">
+            <li class="flex items-center">
+              <i class="fas fa-envelope mr-2 text-amber-400"></i>
+              <span class="text-gray-400">info@islamiclibrary.com</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone mr-2 text-amber-400"></i>
+              <span class="text-gray-400">+234 808030 9969</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-4">Follow Us</h4>
+          <div class="flex space-x-4">
+            <a href="#"
+              class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-600 transition">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#"
+              class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-600 transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#"
+              class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-600 transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#"
+              class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-600 transition">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
+        <p>© 2023 Islamic Library. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top"
+    class="fixed bottom-8 right-8 bg-amber-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-amber-700 transition opacity-0 invisible">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Mobile Menu Toggle
+    let showMore = document.getElementById('showMore')
+    function show() {
+      console.log('hey');
+
+      showMore.style.display = 'block'
+    }
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+
+      if (html.classList.contains('dark')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        // You would need to add dark mode classes to your elements
+      } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+    });
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.remove('opacity-100', 'visible');
+        backToTopButton.classList.add('opacity-0', 'invisible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+
+          // Close mobile menu if open
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // Simulate loading surahs (in a real app, this would be an API call)
+    document.addEventListener('DOMContentLoaded', () => {
+      // This is just a simulation - in a real app you would fetch from an API
+      setTimeout(() => {
+        const surahContainer = document.getElementById('surah-container');
+        if (surahContainer) {
+          surahContainer.classList.add('fade-in');
+        }
+      }, 300);
+
+      // Set Hijri date (simplified - in real app use a proper Hijri date library)
+      const hijriDateElement = document.getElementById('hijri-date');
+      if (hijriDateElement) {
+        const today = new Date();
+        const hijriMonths = ['Muharram', 'Safar', 'Rabi al-Awwal', 'Rabi al-Thani', 'Jumada al-Awwal', 'Jumada al-Thani', 'Rajab', 'Shaaban', 'Ramadan', 'Shawwal', 'Dhu al-Qadah', 'Dhu al-Hijjah'];
+        const hijriDay = Math.floor(Math.random() * 29) + 1; // Random day for demo
+        const hijriMonth = hijriMonths[Math.floor(Math.random() * 12)];
+        const hijriYear = 1444;
+
+        hijriDateElement.textContent = `Today: ${hijriDay} ${hijriMonth} ${hijriYear} AH`;
+      }
+    });
+
+  </script>
 </body>
 </html>
